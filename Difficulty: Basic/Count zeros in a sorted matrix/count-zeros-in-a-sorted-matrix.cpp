@@ -1,13 +1,20 @@
+//Back-end complete function Template for C++
+
 class Solution {
   public:
     int countZeros(vector<vector<int>> A) {
-        int n = A.size(), i = 0, j = n - 1, cnt = 0;
-        while (i < n && j >= 0) {
-            if (A[i][j] == 0) {
-                cnt += j + 1;
-                i++;
-            } else j--;
+        // code here
+        int count=0, row=A.size(), col = A[0].size();
+        int i=0, j=col-1;
+        
+        while(i<row && j>=0){
+            while(j>=0 && A[i][j]==1){
+                j--;
+            }
+            count+=j+1;
+            i++;
         }
-        return cnt;
+        
+        return count;
     }
 };
