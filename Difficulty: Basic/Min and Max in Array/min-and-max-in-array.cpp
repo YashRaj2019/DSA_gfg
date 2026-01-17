@@ -1,18 +1,18 @@
 class Solution {
-public:
-    vector<int> getMinMax(vector<int>& arr) {
-        int mini = arr[0];
-        int maxi = arr[0];
+  public:
+    vector<int> getMinMax(vector<int> &arr) {
+        // code here
+        int n=arr.size();
         
-        for (int i = 1; i < arr.size(); i++) {
-            if (arr[i] < mini) {
-                mini = arr[i];
-            }
-            if (arr[i] > maxi) {
-                maxi = arr[i];
-            }
-        }
+        int m = arr[0];
+        int M = arr[0];
         
-        return {mini, maxi};
+    for(int i=0;i<n;i++){
+        m=min(m, arr[i]);
+        M=max(M, arr[i]);
+    }
+    
+    return {m, M};
+        
     }
 };
