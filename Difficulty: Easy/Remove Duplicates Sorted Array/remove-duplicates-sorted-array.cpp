@@ -1,19 +1,21 @@
 class Solution {
-public:
+  public:
     vector<int> removeDuplicates(vector<int> &arr) {
+        // code here
         int n = arr.size();
-        if(n == 0) return {};
-
-        int index = 1;
-
-        for(int i = 1; i < n; i++) {
-            if(arr[i] != arr[index - 1]) {
-                arr[index] = arr[i];
-                index++;
+        if(n==0){
+            return {};
+        }
+        
+        int k = 1;
+        
+        for(int i=1; i<n;i++){
+            if(arr[i]!= arr[i-1]){
+                arr[k++] = arr[i];
             }
         }
-
-        // Return the deduplicated array part
-        return vector<int>(arr.begin(), arr.begin() + index);
+        
+        arr.resize(k);
+        return arr;
     }
 };
