@@ -10,15 +10,19 @@ class Solution {
         sort(a.begin(), a.end());
         sort(b.begin(), b.end());
         
-        for(int i = 0;i<a.size();i++){
-            if(a[i] != b[i]){
-                return false;
-            }
+        // method 1
+        
+        // for(int i = 0;i<a.size();i++){
+        //     if(a[i] != b[i]){
+        //         return false;
+        //     }
 
-        }
+        // }
         
-        return true;
+        // return true;
         
+        // method 2
+        return a == b;
         
         
         
