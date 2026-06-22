@@ -3,47 +3,36 @@ class Solution {
     int celebrity(vector<vector<int>>& mat) {
         // code here
         int n = mat.size();
-            stack<int>st;
+        stack<int> s;
         
-        for(int i=n-1;i>=0;i--){
-            st.push(i);
+        for(int i=0; i<n; i++){
+            s.push(i);
         }
         
-            int first, second;
+        while(s.size() > 1){
             
-            while(st.size()>1){
-                
-                first = st.top();
-                st.pop();
-                
-                second = st.top();
-                st.pop();
-                
-                if(mat[first][second] ==1){
-                    st.push(second);
-                }
-                
-                else{
-                    st.push(first);
-                }
+            int i = s.top();
+            s.pop();
+            
+            int j = s.top();
+            s.pop();
+            
+            if(mat[i][j] == 0){
+                s.push(i);
             }
-            
-            if(st.empty()){
+            else{
+                s.push(j);
+            }
+        }
+        
+        int celeb = s.top();
+        
+        for(int i=0; i<n; i++){
+            if((i != celeb) && (mat[i][celeb] == 0 || mat[celeb][i] == 1)){
                 return -1;
             }
-            
-            int num = st.top();
-            
-            for(int i=0; i<n;i++){
-                if(i != num){
-                    if(mat[num][i] == 1 || mat[i][num] == 0){
-                        return -1;
-                    }
-                }
-            }
-            return num;
-            
+        }
         
-        
+        return celeb;
     }
 };
