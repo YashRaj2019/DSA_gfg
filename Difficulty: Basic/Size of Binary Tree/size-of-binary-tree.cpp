@@ -1,27 +1,25 @@
 /*
-
-Definition for Binary Tree Node
-struct Node
-{
+Definition for Node
+struct Node {
     int data;
     struct Node* left;
     struct Node* right;
 
-    Node(int x){
-        data = x;
+    Node(int val) {
+        data = val;
         left = right = NULL;
     }
 };
 */
-
 class Solution {
   public:
-    int getSize(Node* node) {
+    int getSize(Node* root) {
         // code here
-        if(node==nullptr){
+        
+        if(root == NULL){
             return 0;
         }
         
-        return (1+getSize(node->left) + getSize(node->right));
+        return 1 + getSize(root->left) + getSize(root->right);
     }
 };
