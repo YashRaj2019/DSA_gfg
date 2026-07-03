@@ -16,8 +16,8 @@ class Node {
 class Solution {
   public:
   
-    void inOrd( Node *root, vector<int>&ans){
-        if(root==nullptr){
+    void inOrd(Node* root, vector<int>&ans){
+        if(root == NULL){
             return;
         }
         
@@ -25,11 +25,14 @@ class Solution {
         ans.push_back(root->data);
         inOrd(root->right, ans);
     }
+  
     vector<int> inOrder(Node* root) {
         // code here
+        
         vector<int>ans;
         inOrd(root, ans);
         return ans;
+        
         
     }
 };
