@@ -16,20 +16,22 @@ class Node {
 class Solution {
   public:
   
-    void postOrd(Node *root, vector<int>&ans){
-        if(root==nullptr){
+   void postOrd(Node* root, vector<int>&ans){
+        
+        if(root == NULL){
             return;
         }
         
         postOrd(root->left, ans);
         postOrd(root->right, ans);
         ans.push_back(root->data);
-    }
+   }
     
     vector<int> postOrder(Node* root) {
         // code here
         vector<int>ans;
         postOrd(root, ans);
         return ans;
+        
     }
 };
