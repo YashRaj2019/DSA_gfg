@@ -10,29 +10,19 @@ struct Node
 // Class Solution
 class Solution {
   public:
-    
-    void countLeaf(Node *root, int &count){
-        if(root==nullptr){
-            return ;
-        }
-        
-        if(!root->left && !root->right){
-            count++;
-            return ;
-        }
-        
-        countLeaf(root->left, count);
-        countLeaf(root->right, count);
-        
-    }
-    
     // Function to count the number of leaf nodes in a binary tree.
     int countLeaves(Node* root) {
         // write code here
-        int count=0;
-        countLeaf(root, count);
-        return count;
         
+        if(root == NULL){
+            return 0;
+        }
+        
+        if(!(root->left) && !(root->right)){
+            return 1;
+        }
+        
+        return  ((countLeaves(root->left)) + countLeaves(root->right));
         
     }
 };
