@@ -15,19 +15,21 @@ class Node
 class Solution {
   public:
   
-    void pre(Node *root, vector<int>&ans){
-        if(root==nullptr){
-            return;
-        }
-        ans.push_back(root->data);
-        pre(root->left, ans);
-        pre(root->right, ans);
-    }
+   void preOrd(Node* root, vector<int>&ans){
+       
+       if(root==NULL){
+           return;
+       }
+       
+       ans.push_back(root->data);
+       preOrd(root->left, ans);
+       preOrd(root->right, ans);
+   }
+  
     vector<int> preOrder(Node* root) {
         // code here
-        
         vector<int>ans;
-        pre(root, ans);
+        preOrd(root, ans);
         return ans;
     }
 };
