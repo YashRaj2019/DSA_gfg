@@ -1,4 +1,4 @@
-/*
+/* Structure of linked list Node
 class Node {
   public:
     int data;
@@ -6,22 +6,20 @@ class Node {
 
     Node(int x) {
         data = x;
-        next = NULL;
+        next = nullptr;
     }
 };
 */
-
 class Solution {
   public:
     int getCount(Node* head) {
         // Code here
         int count = 0;
-        
-        while(head){
+        Node* temp = head;
+        while(temp !=NULL){
             count++;
-            head=head->next;
+            temp = temp->next;
         }
-        
         return count;
     }
 };
