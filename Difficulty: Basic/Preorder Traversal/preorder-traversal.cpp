@@ -1,4 +1,4 @@
-/*
+/* Structure of Tree Node
 class Node
 {
     int data;
@@ -9,27 +9,36 @@ class Node
         data = x;
         left = right = NULL;
     }
-};
-*/
+};*/
 
 class Solution {
   public:
-  
-   void preOrd(Node* root, vector<int>&ans){
-       
-       if(root==NULL){
-           return;
-       }
-       
-       ans.push_back(root->data);
-       preOrd(root->left, ans);
-       preOrd(root->right, ans);
-   }
-  
     vector<int> preOrder(Node* root) {
         // code here
         vector<int>ans;
-        preOrd(root, ans);
+        
+        if(root == NULL){
+            return ans;
+        }
+        
+        stack<Node*>st;
+        st.push(root);
+        
+        while(!st.empty()){
+            root = st.top();
+            st.pop();
+            
+            ans.push_back(root->data);
+            
+            
+            if(root->right != nullptr){
+                st.push(root->right);
+            }
+            
+            if(root->left != nullptr){
+                st.push(root->left);
+            }
+        }
         return ans;
     }
 };
