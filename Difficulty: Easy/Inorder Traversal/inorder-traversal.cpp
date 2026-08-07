@@ -1,4 +1,4 @@
-/*
+/* Structure of Binary Tree Node
 class Node {
   public:
     int data;
@@ -7,32 +7,34 @@ class Node {
 
     Node(int val) {
         data = val;
-        left = NULL;
-        right = NULL;
+        left = right = nullptr;
     }
-};
-*/
+};*/
 
 class Solution {
   public:
-  
-    void inOrd(Node* root, vector<int>&ans){
-        if(root == NULL){
-            return;
-        }
-        
-        inOrd(root->left, ans);
-        ans.push_back(root->data);
-        inOrd(root->right, ans);
-    }
-  
     vector<int> inOrder(Node* root) {
         // code here
-        
+        stack<Node*>st;
+        Node* temp = root;
         vector<int>ans;
-        inOrd(root, ans);
+        
+        while(true){
+            if(temp != NULL){
+                st.push(temp);
+                temp = temp->left;
+            }
+            else{
+                if(st.empty()==true){
+                    break;
+                }
+                
+                temp = st.top();
+                st.pop();
+                ans.push_back(temp->data);
+                temp = temp->right;
+            }
+        }
         return ans;
-        
-        
     }
 };
