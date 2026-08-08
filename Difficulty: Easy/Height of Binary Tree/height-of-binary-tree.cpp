@@ -1,5 +1,4 @@
-/*
-Definition for Node
+/* Structrue of Binary Tree Node
 class Node {
 public:
     int data;
@@ -10,18 +9,16 @@ public:
         data = val;
         left = right = nullptr;
     }
-};
-*/
+};*/
 
 class Solution {
   public:
     int height(Node* root) {
         // code here
-        if(root == NULL){
+        if(root == nullptr){
             return -1;
         }
         
         return 1 + max(height(root->left), height(root->right));
-        
     }
 };
