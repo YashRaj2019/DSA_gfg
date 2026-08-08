@@ -1,41 +1,39 @@
-/*
+/* Structure of binary tree node
 class Node {
   public:
     int data;
     Node* left;
     Node* right;
 
-    // Constructor to initialize a new node
     Node(int val) {
         data = val;
-        left = NULL;
-        right = NULL;
+        left = right = nullptr;
     }
-};
-*/
+};*/
 
 class Solution {
   public:
   
-    int height(Node *root, bool &valid){
-        if(!root){
+    int height(Node* root, bool &valid){
+        if(root == nullptr){
             return 0;
         }
         
-        int l = height(root->left, valid);
-        int r = height(root->right, valid);
+        int left = height(root->left, valid);
+        int right = height(root->right, valid);
         
-        if(abs(l-r)>1){
-            valid=0;
+        if(abs(left - right) > 1){
+            valid = 0;
         }
         
-        return 1 + max(l,r);
+        return 1 + max(left, right);
     }
+    
     bool isBalanced(Node* root) {
         // code here
         bool valid = 1;
-        
         height(root, valid);
         return valid;
+        
     }
 };
