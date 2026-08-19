@@ -2,10 +2,18 @@ class Solution {
   public:
     int gcd(int a, int b) {
         // code here
-        if(b==0){ // base case
-            return a;
-            
+        while(a && b){
+            if(a > b){
+                a = a%b;
+            }
+            else{
+                b = b%a;
+            }
         }
-        return gcd(b, a%b);
+        
+        if(a == 0){
+            return b;
+        }
+        return a;
     }
 };
