@@ -1,30 +1,29 @@
 class Solution {
   public:
+  
+   void dfsHelper(int node, vector<vector<int>>& adj, vector<bool>&visited, vector<int>&ans){
+       visited[node] = true;
+       ans.push_back(node);
+       
+       
+       // visit neighbours in given order
+       for(int it : adj[node]){
+           if(!visited[it]){
+               dfsHelper(it, adj, visited, ans);
+           }
+       }
+   }
+   
     vector<int> dfs(vector<vector<int>>& adj) {
+        // Code here
         int v = adj.size();
-        vector<int> ans;
-        vector<bool> visited(v + 1, false);   // fix
-        stack<int> st;
         
-        st.push(0); // change to 1 if graph is 1-based
+        vector<bool>visited(v, false);
+        vector<int>ans;
         
-        while(!st.empty()){
-            int node = st.top();
-            st.pop();
-            
-            if(!visited[node]){
-                visited[node] = true;
-                ans.push_back(node);
-                
-                for(int i = (int)adj[node].size() - 1; i >= 0; i--){
-                    int neighbour = adj[node][i];
-                    
-                    if(neighbour < visited.size() && !visited[neighbour]){ // extra safety
-                        st.push(neighbour);
-                    }
-                }
-            }   
-        }
+        
+        dfsHelper(0, adj, visited, ans);
+        
         return ans;
     }
 };
