@@ -2,22 +2,22 @@ class Solution {
   public:
     char getMaxOccuringChar(string& s) {
         //  code here
+        unordered_map<char, int>m;
         
-        int freq[26] = {0};
-        
-        for(int i=0;i<s.size();i++){
-            freq[s[i] - 'a']++;
+        for(int i=0; i<s.size(); i++){
+            m[s[i]]++;
         }
         
         int maxFreq = 0;
-        char ans = 'a';
+        char ans;
         
-        for(int i=0;i<26;i++){
-            if(freq[i] > maxFreq){
-                maxFreq = freq[i];
-                ans = char(i + 'a');
+        for(char c = 'a'; c < 'z'; c++){
+            if(m[c] > maxFreq){
+                maxFreq = m[c];
+                ans = c;
             }
         }
+        
         return ans;
     }
 };
