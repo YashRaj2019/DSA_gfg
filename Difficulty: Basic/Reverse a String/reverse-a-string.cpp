@@ -1,10 +1,15 @@
-// User function Template for C++
 class Solution {
   public:
     string reverseString(string& s) {
         // code here
+        int start = 0;
+        int end = s.size()-1;
         
-        reverse(s.begin(), s.end());
+        while(start < end){
+            swap(s[start], s[end]);
+            start++, end--;
+        }
+        
         return s;
     }
 };
