@@ -2,17 +2,16 @@
 
 class Solution {
   public:
-    int countZeros(vector<vector<int>> A) {
+    int countZeros(vector<vector<int>>& mat) {
         // code here
-        int count=0, row=A.size(), col = A[0].size();
-        int i=0, j=col-1;
+        int count = 0;
         
-        while(i<row && j>=0){
-            while(j>=0 && A[i][j]==1){
-                j--;
+        for(int i=0; i<mat.size(); i++){
+            for(int j=0; j<mat[0].size(); j++){
+                if(mat[i][j] == 0){
+                    count++;
+                }
             }
-            count+=j+1;
-            i++;
         }
         
         return count;
